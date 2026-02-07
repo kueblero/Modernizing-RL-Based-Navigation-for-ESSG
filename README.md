@@ -1,6 +1,9 @@
-# NavigationModule
+# Modernising Reinforcement Learning–Based Navigation for Embodied Semantic Scene Graph Generation
 
-Embodied Scene Graph Navigation in AI2-THOR with RL (REINFORCE/PPO), IL pretraining, and Optuna-based hyperparameter optimization.
+This repository contains the code accompanying the paper *Modernising Reinforcement Learning–Based Navigation for Embodied Semantic Scene Graph Generation*.
+
+It implements an AI2-THOR navigation module trained with reinforcement learning (REINFORCE/PPO) and optional imitation learning pretraining to let embodied agents build semantic scene graphs efficiently under a limited action budget.
+We compare compact vs. high-resolution discrete action spaces, single-head vs. multi-head policies, and optional curriculum learning and depth-based collision supervision.
 
 ## Quick Start
 
