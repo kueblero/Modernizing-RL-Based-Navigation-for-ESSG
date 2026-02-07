@@ -218,28 +218,6 @@ RL_training/runs/                # ~7GB model weights (not included)
 └── ...
 ```
 
-### Troubleshooting
-
-**Out of Disk Space**
-- Transition tables are the largest component (~18GB)
-- You can generate only specific floor plans by modifying the scripts
-- Consider generating training scenes (1-20) first, test scenes (21-30) later
-
-**Generation Takes Too Long**
-- Transition tables: ~6-12 hours is normal for all 30 scenes
-- Run overnight or generate subsets first
-- GT graphs and IL dataset are faster (~1-2 hours each)
-
-**AI2-THOR Issues**
-- Python 3.11+ not supported by AI2-THOR, use Python 3.8-3.10
-- On Linux: requires X server or uses CloudRendering mode automatically
-- On macOS: may require Xcode Command Line Tools
-
-**CUDA/GPU Issues**
-- Data generation can run on CPU (slower for IL dataset)
-- RL training requires GPU (tested with RTX 3090, A100)
-- Adjust `n_envs` and batch sizes if running out of GPU memory
-
 ## Project Structure
 
 - `RL_training/` - RL training entry points and runners
