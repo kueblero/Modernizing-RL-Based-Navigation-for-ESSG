@@ -1,0 +1,16 @@
+{
+  "params": {
+    "alpha": 0.0005,
+    "gamma": 0.97,
+    "collision_loss_coef": 0.3,
+    "entropy_coef": 0.05
+  },
+  "value": 0.4169989122369962,
+  "mean_score": 0.4455393269100463,
+  "mean_steps": 15.868494961176276,
+  "mean_collision_rate": 0.14472284666023522,
+  "truncation_rate": 0.01298856766624768,
+  "success_rate": 0.9870114323337523,
+  "total_episodes": 50121,
+  "trial_number": 20
+}

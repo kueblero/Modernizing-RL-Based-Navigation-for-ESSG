@@ -1,0 +1,77 @@
+{
+  "name": "Scenario 7: PPO + Single-Head (504) + Depth + Curriculum",
+  "seed": 42,
+  "strict_determinism": false,
+"agent": {
+    "name": "ppo",
+    "blocks": 1000,
+    "alpha": 0.0001,
+    "gamma": 0.99,
+    "entropy_coef": 0.05,
+    "value_coef": 0.5,
+    "num_steps": 60,
+    "ppo_epochs": 4,
+    "clip_epsilon": 0.15,
+    "use_gae": true,
+    "gae_lambda": 0.97,
+    "max_grad_norm": 0.5,
+    "clip_value": true,
+    "clip_value_epsilon": 0.15,
+    "target_kl": 0.01,
+    "collision_loss_coef": 0.3,
+    "use_torch_compile": true,
+    "use_trajectory_info": true,
+    "trajectory_chunk_size": 600,
+    "auto_trajectory_chunk": false,
+    "trajectory_chunk_min": 100,
+    "trajectory_chunk_max": 1500,
+    "trajectory_chunk_backoff": 0.9
+  },
+  "navigation": {
+    "rgb_dim": 512,
+    "depth_dim": 256,
+    "action_dim": 64,
+    "sg_dim": 512,
+    "policy_hidden": 1024,
+    "use_transformer": false,
+    "max_object_types": 5000,
+    "max_relation_types": 100
+  },
+  "env": {
+    "render": false,
+    "rho": 0.001,
+    "max_actions": 40,
+    "use_legacy_actions": false,
+    "action_space_mode": "single_head_large",
+    "curriculum_stage": 1,
+    "stop_stagnation_steps": 5,
+    "stop_stagnation_bonus": 0.05
+  },
+  "training": {
+    "num_agents": 32,
+    "log_interval": 100,
+    "save_interval": 9999,
+    "il_pretrain": false,
+    "curriculum": {
+      "enabled": true,
+      "n_stages": 4,
+      "mode": "adaptive",
+      "min_stage_blocks": 50,
+      "evaluation_window": 50,
+      "recent_window": 10,
+      "plateau_threshold": 0.02,
+      "metrics": ["mean_score", "mean_reward", "mean_steps"],
+      "force_promotion_blocks": 250,
+      "initial_stage": 1,
+      "entropy_boost_factor": 2.0,
+      "entropy_decay_blocks": 20
+    },
+    "notes": "PPO with single-head 504 + 4-stage adaptive curriculum (16→48→108→504). Identical curriculum to S4 but single action head."
+  },
+  "evaluation": {
+    "enabled": true,
+    "eval_interval": 50,
+    "eval_scene_numbers": [28, 29, 30],
+    "episodes_per_scene": 10
+  }
+}

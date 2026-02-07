@@ -1,0 +1,50 @@
+{
+  "name": "Scenario 0: REINFORCE + Legacy Actions (16 discrete) + IL Pre-training",
+  "seed": 42,
+  "strict_determinism": false,
+  "agent": {
+    "name": "reinforce",
+    "blocks": 1000,
+   "alpha": 5e-4,
+    "gamma": 0.97,
+    "entropy_coef": 0.05,
+    "num_steps": 60,
+    "collision_loss_coef": 0.3,
+    "use_trajectory_info": true,
+    "trajectory_chunk_size": 300
+  },
+  "navigation": {
+    "rgb_dim": 512,
+    "depth_dim": 256,
+    "action_dim": 64,
+    "sg_dim": 512,
+    "policy_hidden": 1024,
+    "use_transformer": false,
+    "max_object_types": 5000,
+    "max_relation_types": 100
+  },
+  "env": {
+    "render": false,
+    "rho": 0.001,
+    "max_actions": 40,
+    "use_legacy_actions": true,
+    "curriculum_stage": null,
+    "stop_stagnation_steps": 5,
+    "stop_stagnation_bonus": 0.05
+  },
+  "training": {
+    "num_agents": 32,
+    "eval_interval": 100,
+    "save_interval": 9999,
+    "il_pretrain": true,
+    "il_checkpoint": "components/data/model_weights/il/il_pretrained_model.pth",
+    "reinit_policy_head": true,
+    "notes": "REINFORCE with IL pre-training. Uses pre-trained encoder, policy head reinitialized (reinit_policy_head=true)."
+  },
+    "evaluation": {
+    "enabled": true,
+    "eval_interval": 50,
+    "eval_scene_numbers": [28, 29, 30],
+    "episodes_per_scene": 10
+  }
+}

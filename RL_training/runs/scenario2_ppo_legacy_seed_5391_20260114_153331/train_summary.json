@@ -1,0 +1,9 @@
+{
+  "best_mean_score": 0.5913078295552693,
+  "max_score": 0.5913078295552693,
+  "episodes": 93011,
+  "updates": 1000,
+  "env_steps": 1920000,
+  "progress_unit": "blocks",
+  "blocks": 1000
+}
